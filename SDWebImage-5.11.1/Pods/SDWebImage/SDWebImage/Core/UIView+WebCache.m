@@ -46,6 +46,7 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
     objc_setAssociatedObject(self, @selector(sd_imageProgress), sd_imageProgress, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// 从 sd_setImageWithURL 方法跳转过来
 - (void)sd_internalSetImageWithURL:(nullable NSURL *)url
                   placeholderImage:(nullable UIImage *)placeholder
                            options:(SDWebImageOptions)options
@@ -61,32 +62,35 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
     }
     NSString *validOperationKey = context[SDWebImageContextSetImageOperationKey];
     if (!validOperationKey) {
-        // pass through the operation key to downstream, which can used for tracing operation or image view class
+        // 赋值当前 view 的类名，例如 UIImageView
         validOperationKey = NSStringFromClass([self class]);
         SDWebImageMutableContext *mutableContext = [context mutableCopy];
         mutableContext[SDWebImageContextSetImageOperationKey] = validOperationKey;
         context = [mutableContext copy];
     }
     self.sd_latestOperationKey = validOperationKey;
+    // 取消 image 的加载操作
     [self sd_cancelImageLoadOperationWithKey:validOperationKey];
     self.sd_imageURL = url;
     
     if (!(options & SDWebImageDelayPlaceholder)) {
         dispatch_main_async_safe(^{
+            // 加载 placeholder image
             [self sd_setImage:placeholder imageData:nil basedOnClassOrViaCustomSetImageBlock:setImageBlock cacheType:SDImageCacheTypeNone imageURL:url];
         });
     }
     
     if (url) {
-        // reset the progress
+        // 重置进度
         NSProgress *imageProgress = objc_getAssociatedObject(self, @selector(sd_imageProgress));
         if (imageProgress) {
             imageProgress.totalUnitCount = 0;
             imageProgress.completedUnitCount = 0;
         }
-        
+
+// 如果是 iOS、tvOS、macOS 系统
 #if SD_UIKIT || SD_MAC
-        // check and start image indicator
+        // 检查并启动 image 指示器 [indicator]
         [self sd_startImageIndicator];
         id<SDWebImageIndicator> imageIndicator = self.sd_imageIndicator;
 #endif
@@ -94,7 +98,7 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
         if (!manager) {
             manager = [SDWebImageManager sharedManager];
         } else {
-            // remove this manager to avoid retain cycle (manger -> loader -> operation -> context -> manager)
+            // 删除 manager 避免循环引用：manger -> loader -> operation -> context -> manager
             SDWebImageMutableContext *mutableContext = [context mutableCopy];
             mutableContext[SDWebImageContextCustomManager] = nil;
             context = [mutableContext copy];
@@ -105,6 +109,8 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
                 imageProgress.totalUnitCount = expectedSize;
                 imageProgress.completedUnitCount = receivedSize;
             }
+            
+// 如果是 iOS、tvOS、macOS 系统
 #if SD_UIKIT || SD_MAC
             if ([imageIndicator respondsToSelector:@selector(updateIndicatorProgress:)]) {
                 double progress = 0;
@@ -122,6 +128,7 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
             }
         };
         @weakify(self);
+        // 获取 image
         id <SDWebImageOperation> operation = [manager loadImageWithURL:url options:options context:context progress:combinedProgressBlock completed:^(UIImage *image, NSData *data, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             @strongify(self);
             if (!self) { return; }
@@ -404,6 +411,7 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
     [self addSubview:view];
 }
 
+// 检查并启动 image 指示器 indicator
 - (void)sd_startImageIndicator {
     id<SDWebImageIndicator> imageIndicator = self.sd_imageIndicator;
     if (!imageIndicator) {

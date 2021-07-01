@@ -21,8 +21,7 @@
     #define SD_MAC 0
 #endif
 
-// iOS and tvOS are very similar, UIKit exists on both platforms
-// Note: watchOS also has UIKit, but it's very limited
+// iOS 和 tvOS 非常相似，都包含 UIKit，watchOS 包含部分 UIKit
 #if TARGET_OS_IOS || TARGET_OS_TV
     #define SD_UIKIT 1
 #else

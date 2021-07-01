@@ -31,12 +31,10 @@ typedef void(^SDSetImageBlock)(UIImage * _Nullable image, NSData * _Nullable ima
  */
 @property (nonatomic, strong, readonly, nullable) NSURL *sd_imageURL;
 
-/**
- * Get the current image operation key. Operation key is used to identify the different queries for one view instance (like UIButton).
- * See more about this in `SDWebImageContextSetImageOperationKey`.
- * If you cancel current image load, the key will be set to nil.
- * @note You can use method `UIView+WebCacheOperation` to investigate different queries' operation.
- */
+// 当前 view 的类名，例如 UIImageView
+// See more about this in `SDWebImageContextSetImageOperationKey`
+// 如果你取消当前 image 的加载，这个 key 将被置为 nil
+// @note You can use method `UIView+WebCacheOperation` to investigate different queries' operation.
 @property (nonatomic, strong, readonly, nullable) NSString *sd_latestOperationKey;
 
 /**

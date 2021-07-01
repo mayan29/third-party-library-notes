@@ -102,10 +102,7 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
      */
     SDWebImageHighPriority = 1 << 7,
     
-    /**
-     * By default, placeholder images are loaded while the image is loading. This flag will delay the loading
-     * of the placeholder image until after the image has finished loading.
-     */
+    // 默认情况下，在 image loading 时加载 placeholder images。此标志将推迟 placeholder image 的加载，直到 image loading 完成。
     SDWebImageDelayPlaceholder = 1 << 8,
     
     /**
@@ -154,9 +151,7 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
      */
     SDWebImageFromCacheOnly = 1 << 15,
     
-    /**
-     * By default, we query the cache before the image is load from the loader. This flag can prevent this to load from loader only.
-     */
+    // 默认情况下，我们在从加载器 [loader] 加载 image 之前查询缓存。此标志可阻止查询缓存，仅从 loader 中加载。
     SDWebImageFromLoaderOnly = 1 << 16,
     
     /**

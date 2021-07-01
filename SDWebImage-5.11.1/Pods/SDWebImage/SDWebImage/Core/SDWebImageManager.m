@@ -72,10 +72,12 @@ static id<SDImageLoader> _defaultImageLoader;
 }
 
 - (nonnull instancetype)init {
+    // 初始化 image 缓存器
     id<SDImageCache> cache = [[self class] defaultImageCache];
     if (!cache) {
         cache = [SDImageCache sharedImageCache];
     }
+    // 初始化 image 下载器
     id<SDImageLoader> loader = [[self class] defaultImageLoader];
     if (!loader) {
         loader = [SDWebImageDownloader sharedDownloader];
@@ -112,6 +114,7 @@ static id<SDImageLoader> _defaultImageLoader;
     return key;
 }
 
+// 查询 cache
 - (nullable NSString *)cacheKeyForURL:(nullable NSURL *)url context:(nullable SDWebImageContext *)context {
     if (!url) {
         return @"";
@@ -124,6 +127,7 @@ static id<SDImageLoader> _defaultImageLoader;
         cacheKeyFilter = context[SDWebImageContextCacheKeyFilter];
     }
     if (cacheKeyFilter) {
+        // 查询 cache
         key = [cacheKeyFilter cacheKeyForURL:url];
     } else {
         key = url.absoluteString;
@@ -161,10 +165,12 @@ static id<SDImageLoader> _defaultImageLoader;
     return key;
 }
 
+// 获取 image [1]
 - (SDWebImageCombinedOperation *)loadImageWithURL:(NSURL *)url options:(SDWebImageOptions)options progress:(SDImageLoaderProgressBlock)progressBlock completed:(SDInternalCompletionBlock)completedBlock {
     return [self loadImageWithURL:url options:options context:nil progress:progressBlock completed:completedBlock];
 }
 
+// 获取 image [2]
 - (SDWebImageCombinedOperation *)loadImageWithURL:(nullable NSURL *)url
                                           options:(SDWebImageOptions)options
                                           context:(nullable SDWebImageContext *)context
@@ -205,10 +211,10 @@ static id<SDImageLoader> _defaultImageLoader;
     [self.runningOperations addObject:operation];
     SD_UNLOCK(_runningOperationsLock);
     
-    // Preprocess the options and context arg to decide the final the result for manager
+    // 预处理 options 和 context 参数，返回的结果给 manager
     SDWebImageOptionsResult *result = [self processedResultForURL:url options:options context:context];
     
-    // Start the entry to load image from cache
+    // 启动：从缓存中获取 image
     [self callCacheProcessForOperation:operation url:url options:result.options context:result.context progress:progressBlock completed:completedBlock];
 
     return operation;
@@ -246,7 +252,7 @@ static id<SDImageLoader> _defaultImageLoader;
 
 #pragma mark - Private
 
-// Query normal cache process
+// 从缓存中获取 image
 - (void)callCacheProcessForOperation:(nonnull SDWebImageCombinedOperation *)operation
                                  url:(nonnull NSURL *)url
                              options:(SDWebImageOptions)options
@@ -266,9 +272,10 @@ static id<SDImageLoader> _defaultImageLoader;
         queryCacheType = [context[SDWebImageContextQueryCacheType] integerValue];
     }
     
-    // Check whether we should query cache
+    // 检查是否应该查询 cache
     BOOL shouldQueryCache = !SD_OPTIONS_CONTAINS(options, SDWebImageFromLoaderOnly);
     if (shouldQueryCache) {
+        // 查询 cache
         NSString *key = [self cacheKeyForURL:url context:context];
         @weakify(operation);
         operation.cacheOperation = [imageCache queryImageForKey:key options:options context:context cacheType:queryCacheType completion:^(UIImage * _Nullable cachedImage, NSData * _Nullable cachedData, SDImageCacheType cacheType) {
@@ -288,7 +295,7 @@ static id<SDImageLoader> _defaultImageLoader;
             [self callDownloadProcessForOperation:operation url:url options:options context:context cachedImage:cachedImage cachedData:cachedData cacheType:cacheType progress:progressBlock completed:completedBlock];
         }];
     } else {
-        // Continue download process
+        // 从服务端下载
         [self callDownloadProcessForOperation:operation url:url options:options context:context cachedImage:nil cachedData:nil cacheType:SDImageCacheTypeNone progress:progressBlock completed:completedBlock];
     }
 }
@@ -350,7 +357,7 @@ static id<SDImageLoader> _defaultImageLoader;
     }
 }
 
-// Download process
+// 从服务端下载
 - (void)callDownloadProcessForOperation:(nonnull SDWebImageCombinedOperation *)operation
                                     url:(nonnull NSURL *)url
                                 options:(SDWebImageOptions)options
@@ -419,7 +426,7 @@ static id<SDImageLoader> _defaultImageLoader;
                     [self.failedURLs removeObject:url];
                     SD_UNLOCK(self->_failedURLsLock);
                 }
-                // Continue store cache process
+                // 将得到的 image 进行缓存
                 [self callStoreCacheProcessForOperation:operation url:url options:options context:context downloadedImage:downloadedImage downloadedData:downloadedData finished:finished progress:progressBlock completed:completedBlock];
             }
             
@@ -437,7 +444,7 @@ static id<SDImageLoader> _defaultImageLoader;
     }
 }
 
-// Store cache process
+// 将得到的 image 进行缓存
 - (void)callStoreCacheProcessForOperation:(nonnull SDWebImageCombinedOperation *)operation
                                       url:(nonnull NSURL *)url
                                   options:(SDWebImageOptions)options
@@ -484,7 +491,7 @@ static id<SDImageLoader> _defaultImageLoader;
     shouldTransformImage = shouldTransformImage && (!downloadedImage.sd_isVector || (options & SDWebImageTransformVectorImage));
     BOOL shouldCacheOriginal = downloadedImage && finished;
     
-    // if available, store original image to cache
+    // 如果存在 image 并且已经下载完成
     if (shouldCacheOriginal) {
         // normally use the store cache type, but if target image is transformed, use original store cache type instead
         SDImageCacheType targetStoreCacheType = shouldTransformImage ? originalStoreCacheType : storeCacheType;
@@ -499,6 +506,7 @@ static id<SDImageLoader> _defaultImageLoader;
                 }
             });
         } else {
+            // 存储 image
             [self storeImage:downloadedImage imageData:downloadedData forKey:key imageCache:imageCache cacheType:targetStoreCacheType options:options context:context completion:^{
                 // Continue transform process
                 [self callTransformProcessForOperation:operation url:url options:options context:context originalImage:downloadedImage originalData:downloadedData finished:finished progress:progressBlock completed:completedBlock];
@@ -581,6 +589,7 @@ static id<SDImageLoader> _defaultImageLoader;
     SD_UNLOCK(_runningOperationsLock);
 }
 
+// 存储 image
 - (void)storeImage:(nullable UIImage *)image
          imageData:(nullable NSData *)data
             forKey:(nullable NSString *)key

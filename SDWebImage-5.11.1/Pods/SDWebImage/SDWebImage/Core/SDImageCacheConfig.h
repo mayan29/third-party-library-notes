@@ -85,12 +85,10 @@ typedef NS_ENUM(NSUInteger, SDImageCacheConfigExpireType) {
  */
 @property (assign, nonatomic) NSDataWritingOptions diskCacheWritingOptions;
 
-/**
- * The maximum length of time to keep an image in the disk cache, in seconds.
- * Setting this to a negative value means no expiring.
- * Setting this to zero means that all cached files would be removed when do expiration check.
- * Defaults to 1 week.
- */
+// image 保留在磁盘缓存中的最长时间（秒）
+// Setting this to a negative value means no expiring.
+// Setting this to zero means that all cached files would be removed when do expiration check.
+// 默认为一周
 @property (assign, nonatomic) NSTimeInterval maxDiskAge;
 
 /**

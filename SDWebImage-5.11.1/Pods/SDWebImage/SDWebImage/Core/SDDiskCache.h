@@ -88,9 +88,7 @@
  */
 - (void)removeAllData;
 
-/**
- Removes the expired data from the cache. You can choose the data to remove base on `ageLimit`, `countLimit` and `sizeLimit` options.
- */
+// 从磁盘缓存中删除过期数据。你可以根据 ageLimit、countLimit 和 sizeLimit 选项选择要删除的数据。
 - (void)removeExpiredData;
 
 /**

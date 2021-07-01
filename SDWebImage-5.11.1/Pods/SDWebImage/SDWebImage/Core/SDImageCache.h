@@ -407,9 +407,7 @@ typedef NS_OPTIONS(NSUInteger, SDImageCacheOptions) {
  */
 - (NSUInteger)totalDiskCount;
 
-/**
- * Asynchronously calculate the disk cache's size.
- */
+// 异步计算磁盘缓存的大小
 - (void)calculateSizeWithCompletionBlock:(nullable SDImageCacheCalculateSizeBlock)completionBlock;
 
 @end

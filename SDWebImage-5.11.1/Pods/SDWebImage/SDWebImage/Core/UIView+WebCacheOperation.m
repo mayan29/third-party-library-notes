@@ -52,9 +52,10 @@ typedef NSMapTable<NSString *, id<SDWebImageOperation>> SDOperationsDictionary;
     }
 }
 
+// // 取消 image 的加载操作
 - (void)sd_cancelImageLoadOperationWithKey:(nullable NSString *)key {
     if (key) {
-        // Cancel in progress downloader from queue
+        // 从队列中取消正在进行的下载器 [downloader]
         SDOperationsDictionary *operationDictionary = [self sd_operationDictionary];
         id<SDWebImageOperation> operation;
         

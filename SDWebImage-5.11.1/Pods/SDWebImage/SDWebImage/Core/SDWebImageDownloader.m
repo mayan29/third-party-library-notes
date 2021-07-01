@@ -285,7 +285,7 @@ static void * SDWebImageDownloaderContext = &SDWebImageDownloaderContext;
         mutableContext = [NSMutableDictionary dictionary];
     }
     
-    // Request Modifier
+    // Request Modifie
     id<SDWebImageDownloaderRequestModifier> requestModifier;
     if ([context valueForKey:SDWebImageContextDownloadRequestModifier]) {
         requestModifier = [context valueForKey:SDWebImageContextDownloadRequestModifier];
@@ -529,6 +529,7 @@ didReceiveResponse:(NSURLResponse *)response
     return self;
 }
 
+// 下载完成的响应
 - (void)downloadDidReceiveResponse:(NSNotification *)notification {
     NSOperation<SDWebImageDownloaderOperation> *downloadOperation = notification.object;
     if (downloadOperation && downloadOperation == self.downloadOperation) {

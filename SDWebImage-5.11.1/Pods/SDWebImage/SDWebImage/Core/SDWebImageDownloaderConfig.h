@@ -16,9 +16,7 @@ typedef NS_ENUM(NSInteger, SDWebImageDownloaderExecutionOrder) {
      */
     SDWebImageDownloaderFIFOExecutionOrder,
     
-    /**
-     * All download operations will execute in stack style (last-in-first-out).
-     */
+    // 所有下载操作都将以栈方式执行：后进先出
     SDWebImageDownloaderLIFOExecutionOrder
 };
 
