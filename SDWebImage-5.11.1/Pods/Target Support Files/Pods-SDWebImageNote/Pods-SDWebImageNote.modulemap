@@ -1,0 +1,6 @@
+framework module Pods_SDWebImageNote {
+  umbrella header "Pods-SDWebImageNote-umbrella.h"
+
+  export *
+  module * { export * }
+}
