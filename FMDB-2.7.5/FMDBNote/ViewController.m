@@ -19,10 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
         
-    [[FMDBManager shareInstance] getPersonArray:^(NSArray<Person *> * _Nonnull personArray) {
-        self.dataArray = personArray;
-        [self.tableView reloadData];
-    }];
+    [self reloadData];
 }
 
 - (IBAction)add:(UIBarButtonItem *)sender {
@@ -30,7 +27,15 @@
     Person *p = [[Person alloc] initWithId:id
                                       name:[NSString stringWithFormat:@"人员 %d", id]
                                      phone:[NSString stringWithFormat:@"%d%d%d%d%d", id, id, id, id, id]];
-    [[FMDBManager shareInstance] addPerson:p andProgressBlock:^(NSArray<Person *> * _Nonnull personArray) {
+    [[FMDBManager shareInstance] addPerson:p andProgressBlock:^(BOOL isSuccess) {
+        if (isSuccess) {
+            [self reloadData];
+        }
+    }];
+}
+
+- (void)reloadData {
+    [[FMDBManager shareInstance] getPersonArray:^(NSArray<Person *> * _Nonnull personArray) {
         self.dataArray = personArray;
         [self.tableView reloadData];
     }];

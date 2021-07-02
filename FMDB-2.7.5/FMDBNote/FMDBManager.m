@@ -8,12 +8,6 @@
 #import "FMDBManager.h"
 #import <FMDB.h>
 
-@interface FMDBManager ()
-
-@property (nonatomic, strong) FMDatabaseQueue *queue;
-
-@end
-
 @implementation FMDBManager
 
 + (instancetype)shareInstance {
@@ -31,10 +25,7 @@
     if (self) {
         NSLog(@"%@", NSTemporaryDirectory());
         
-        NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.db"];
-        self.queue = [FMDatabaseQueue databaseQueueWithPath:path];
-        
-        [self.queue inDatabase:^(FMDatabase * _Nonnull db) {
+        [self.createQueue inDatabase:^(FMDatabase * _Nonnull db) {
             BOOL result = [db executeUpdate:@"create table if not exists t_person ('number' INTEGER PRIMARY KEY AUTOINCREMENT, 'name' TEXT NOT NULL, 'phone' TEXT NOT NULL)"];
             if (result) {
                 NSLog(@"%s 创建 table 成功", __func__);
@@ -44,41 +35,36 @@
     return self;
 }
 
-- (void)getPersonArray:(personArrayBlock)block
-{
-    [self.queue inDatabase:^(FMDatabase * _Nonnull db) {
-        NSArray *arr = [self __getPersonArrayWithDataBase:db];
+- (FMDatabaseQueue *)createQueue {
+    NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.db"];
+    return [FMDatabaseQueue databaseQueueWithPath:path];
+}
+
+- (void)getPersonArray:(void (^)(NSArray<Person *> * _Nonnull))block {
+    [self.createQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        NSMutableArray *arr = [NSMutableArray array];
+        
+        FMResultSet *result = [db executeQuery:@"select * from 't_person'"];
+        while (result.next) {
+            Person *p = [[Person alloc] initWithId:[result intForColumn:@"number"]
+                                              name:[result stringForColumn:@"name"]
+                                             phone:[result stringForColumn:@"phone"]];
+            [arr addObject:p];
+        }
+        NSLog(@"%s 获取到的 person 数量: %lu", __func__, (unsigned long)arr.count);
         block(arr);
     }];
 }
 
-- (void)addPerson:(Person *)person andProgressBlock:(personArrayBlock)block
-{
-    [self.queue inDatabase:^(FMDatabase * _Nonnull db) {
+- (void)addPerson:(Person *)person andProgressBlock:(void (^)(BOOL))block {
+    [self.createQueue inDatabase:^(FMDatabase * _Nonnull db) {
         BOOL result = [db executeUpdate:@"insert into 't_person'(number, name, phone) values(?, ?, ?)"
                    withArgumentsInArray:@[@(person.id), person.name, person.phone]];
         if (result) {
             NSLog(@"%s 添加 person 成功", __func__);
-            NSArray *arr = [self __getPersonArrayWithDataBase:db];
-            block(arr);
         }
+        block(result);
     }];
 }
-
-- (NSArray <Person *>*)__getPersonArrayWithDataBase:(FMDatabase *)db {
-    FMResultSet *result = [db executeQuery:@"select * from 't_person'"];
-    
-    NSMutableArray *arr = [NSMutableArray array];
-    while (result.next) {
-        Person *p = [[Person alloc] initWithId:[result intForColumn:@"number"]
-                                          name:[result stringForColumn:@"name"]
-                                         phone:[result stringForColumn:@"phone"]];
-        [arr addObject:p];
-    }
-    NSLog(@"%s 获取到的 person 数量: %lu", __func__, (unsigned long)arr.count);
-    
-    return arr.copy;
-}
-
 
 @end

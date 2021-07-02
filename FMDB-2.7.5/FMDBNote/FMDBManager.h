@@ -10,14 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^personArrayBlock)(NSArray <Person *>*);
-
 @interface FMDBManager : NSObject
 
 + (instancetype)shareInstance;
 
-- (void)getPersonArray:(personArrayBlock)block;
-- (void)addPerson:(Person *)person andProgressBlock:(personArrayBlock)block;
+- (void)getPersonArray:(void(^)(NSArray <Person *>*))block;
+- (void)addPerson:(Person *)person andProgressBlock:(void(^)(BOOL))block;
 
 @end
 
