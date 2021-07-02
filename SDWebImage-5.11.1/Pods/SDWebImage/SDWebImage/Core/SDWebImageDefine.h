@@ -111,11 +111,8 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageOptions) {
      */
     SDWebImageTransformAnimatedImage = 1 << 9,
     
-    /**
-     * By default, image is added to the imageView after download. But in some cases, we want to
-     * have the hand before setting the image (apply a filter or add it with cross-fade animation for instance)
-     * Use this flag if you want to manually set the image in the completion when success
-     */
+    // 默认情况下，image 在下载后添加到 imageView。但在某些情况下，我们希望在设置图像之前做些事情（例如使用过滤器 [filter] 或添加一个淡入淡出动画）
+    // 如果要在成功时手动设置完成中的图像，请使用此标志
     SDWebImageAvoidAutoSetImage = 1 << 10,
     
     /**

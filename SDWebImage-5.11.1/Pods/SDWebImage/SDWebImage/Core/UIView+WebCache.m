@@ -145,7 +145,9 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
             }
 #endif
             
+            // 是否应该调用 completedBlock
             BOOL shouldCallCompletedBlock = finished || (options & SDWebImageAvoidAutoSetImage);
+            // 是否不设置 image
             BOOL shouldNotSetImage = ((image && (options & SDWebImageAvoidAutoSetImage)) ||
                                       (!image && !(options & SDWebImageDelayPlaceholder)));
             SDWebImageNoParamsBlock callCompletedBlockClosure = ^{
@@ -179,7 +181,7 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
             }
             
 #if SD_UIKIT || SD_MAC
-            // check whether we should use the image transition
+            // 检查是否应该使用 image 转换 [transition]
             SDWebImageTransition *transition = nil;
             BOOL shouldUseTransition = NO;
             if (options & SDWebImageForceTransition) {

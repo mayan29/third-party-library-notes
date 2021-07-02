@@ -142,10 +142,12 @@ NSString * _Nullable SDThumbnailedKeyForKey(NSString * _Nullable key, CGSize thu
     return [NSString stringWithFormat:@"SDImageResizingTransformer({%f,%f},%lu)", size.width, size.height, (unsigned long)self.scaleMode];
 }
 
+// 将 image 转换为另一个 image
 - (UIImage *)transformedImageWithImage:(UIImage *)image forKey:(NSString *)key {
     if (!image) {
         return nil;
     }
+    // 调整 image 大小
     return [image sd_resizedImageWithSize:self.size scaleMode:self.scaleMode];
 }
 

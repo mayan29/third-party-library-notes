@@ -199,6 +199,7 @@ static NSString * const SDDiskCacheExtendedAttributeName = @"com.hackemist.SDDis
         cacheFiles[fileURL] = resourceValues;
     }
     
+    // 遍历待删除的 fileUrl 数组，并删除缓存文件
     for (NSURL *fileURL in urlsToDelete) {
         [self.fileManager removeItemAtURL:fileURL error:nil];
     }
@@ -207,16 +208,16 @@ static NSString * const SDDiskCacheExtendedAttributeName = @"com.hackemist.SDDis
     // size-based cleanup pass.  We delete the oldest files first.
     NSUInteger maxDiskSize = self.config.maxDiskSize;
     if (maxDiskSize > 0 && currentCacheSize > maxDiskSize) {
-        // Target half of our maximum cache size for this cleanup pass.
+        // 清理的目标：缓存为 maxDiskSize 的一半
         const NSUInteger desiredCacheSize = maxDiskSize / 2;
         
-        // Sort the remaining cache files by their last modification time or last access time (oldest first).
+        // 按上次修改时间或上次访问时间对其余缓存文件进行排序
         NSArray<NSURL *> *sortedFiles = [cacheFiles keysSortedByValueWithOptions:NSSortConcurrent
                                                                  usingComparator:^NSComparisonResult(id obj1, id obj2) {
                                                                      return [obj1[cacheContentDateKey] compare:obj2[cacheContentDateKey]];
                                                                  }];
         
-        // Delete files until we fall below our desired cache size.
+        // 删除文件，直到低于我们期望的 cache 大小
         for (NSURL *fileURL in sortedFiles) {
             if ([self.fileManager removeItemAtURL:fileURL error:nil]) {
                 NSDictionary<NSString *, id> *resourceValues = cacheFiles[fileURL];

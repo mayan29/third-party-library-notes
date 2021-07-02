@@ -34,14 +34,7 @@ typedef NS_OPTIONS(NSUInteger, SDRectCorner) {
 
 #pragma mark - Image Geometry
 
-/**
- Returns a new image which is resized from this image.
- You can specify a larger or smaller size than the image size. The image content will be changed with the scale mode.
- 
- @param size        The new size to be resized, values should be positive.
- @param scaleMode   The scale mode for image content.
- @return The new image with the given size.
- */
+// 调整 image 大小
 - (nullable UIImage *)sd_resizedImageWithSize:(CGSize)size scaleMode:(SDImageScaleMode)scaleMode;
 
 /**

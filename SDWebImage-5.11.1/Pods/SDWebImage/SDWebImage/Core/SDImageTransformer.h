@@ -44,13 +44,8 @@ FOUNDATION_EXPORT NSString * _Nullable SDThumbnailedKeyForKey(NSString * _Nullab
  */
 @property (nonatomic, copy, readonly, nonnull) NSString *transformerKey;
 
-/**
- Transform the image to another image.
-
- @param image The image to be transformed
- @param key The cache key associated to the image. This arg is a hint for image source, not always useful and should be nullable. In the future we will remove this arg.
- @return The transformed image, or nil if transform failed
- */
+// 将 image 转换为另一个 image
+// key: 与 image 关联的 cache key。此参数是 image source 的提示，可以为空。将来我们将删除此参数
 - (nullable UIImage *)transformedImageWithImage:(nonnull UIImage *)image forKey:(nonnull NSString *)key API_DEPRECATED("The key arg will be removed in the future. Update your code and don't rely on that.", macos(10.10, API_TO_BE_DEPRECATED), ios(8.0, API_TO_BE_DEPRECATED), tvos(9.0, API_TO_BE_DEPRECATED), watchos(2.0, API_TO_BE_DEPRECATED));
 
 @end

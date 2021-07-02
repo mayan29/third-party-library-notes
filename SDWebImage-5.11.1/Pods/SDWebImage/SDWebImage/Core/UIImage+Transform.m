@@ -199,6 +199,7 @@ static inline CGImageRef _Nullable SDCreateCGImageFromCIImage(CIImage * _Nonnull
     }
 }
 
+// 调整 image 大小
 - (nullable UIImage *)sd_resizedImageWithSize:(CGSize)size scaleMode:(SDImageScaleMode)scaleMode {
     if (size.width <= 0 || size.height <= 0) return nil;
     SDGraphicsImageRendererFormat *format = [[SDGraphicsImageRendererFormat alloc] init];

@@ -9,23 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "SDWebImageCompat.h"
 
-/// Image Cache Expire Type
+// image cache 过期类型
 typedef NS_ENUM(NSUInteger, SDImageCacheConfigExpireType) {
-    /**
-     * When the image cache is accessed it will update this value
-     */
+    // 访问，触发更新
     SDImageCacheConfigExpireTypeAccessDate,
-    /**
-     * When the image cache is created or modified it will update this value (Default)
-     */
+    // 创建、修改，触发更新（默认）
     SDImageCacheConfigExpireTypeModificationDate,
-    /**
-     * When the image cache is created it will update this value
-     */
+    // 创建，触发更新
     SDImageCacheConfigExpireTypeCreationDate,
-    /**
-     * When the image cache is created, modified, renamed, file attribute updated (like permission, xattr)  it will update this value
-     */
+    // 创建、修改、重命名、更新文件属性（比如 permission、xattr），触发更新
     SDImageCacheConfigExpireTypeChangeDate,
 };
 
@@ -47,11 +39,7 @@ typedef NS_ENUM(NSUInteger, SDImageCacheConfigExpireType) {
  */
 @property (assign, nonatomic) BOOL shouldDisableiCloud;
 
-/**
- * Whether or not to use memory cache
- * @note When the memory cache is disabled, the weak memory cache will also be disabled.
- * Defaults to YES.
- */
+// 是否使用 memory cache，默认为 YES
 @property (assign, nonatomic) BOOL shouldCacheImagesInMemory;
 
 /*
@@ -91,29 +79,21 @@ typedef NS_ENUM(NSUInteger, SDImageCacheConfigExpireType) {
 // 默认为一周
 @property (assign, nonatomic) NSTimeInterval maxDiskAge;
 
-/**
- * The maximum size of the disk cache, in bytes.
- * Defaults to 0. Which means there is no cache size limit.
- */
+// 磁盘缓存的最大 size（字节）
+// 默认为 0，这意味着没有缓存大小限制
 @property (assign, nonatomic) NSUInteger maxDiskSize;
 
-/**
- * The maximum "total cost" of the in-memory image cache. The cost function is the bytes size held in memory.
- * @note The memory cost is bytes size in memory, but not simple pixels count. For common ARGB8888 image, one pixel is 4 bytes (32 bits).
- * Defaults to 0. Which means there is no memory cost limit.
- */
+// 内存中 image 缓存的最大总开销（字节）
+// @note The memory cost is bytes size in memory, but not simple pixels count. For common ARGB8888 image, one pixel is 4 bytes (32 bits).
+// 默认为 0。这意味着没有内存开销限制
 @property (assign, nonatomic) NSUInteger maxMemoryCost;
 
-/**
- * The maximum number of objects in-memory image cache should hold.
- * Defaults to 0. Which means there is no memory count limit.
- */
+// 内存中 image 缓存的最大数量
+// 默认为 0。这意味着没有内存数量限制
 @property (assign, nonatomic) NSUInteger maxMemoryCount;
 
-/*
- * The attribute which the clear cache will be checked against when clearing the disk cache
- * Default is Modified Date
- */
+// 清除磁盘缓存时，将根据其检查清除缓存的属性
+// 默认为修改日期
 @property (assign, nonatomic) SDImageCacheConfigExpireType diskCacheExpireType;
 
 /**
