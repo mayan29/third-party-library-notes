@@ -191,31 +191,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)interrupt;
 
-///-----------------------------------------------
-/// @name Dispatching database operations to queue
-///-----------------------------------------------
-
-/** Synchronously perform database operations on queue.
- 
- @param block The code to be run on the queue of `FMDatabaseQueue`
- */
-
+// queue 中同步执行数据库操作
 - (void)inDatabase:(__attribute__((noescape)) void (^)(FMDatabase *db))block;
 
-/** Synchronously perform database operations on queue, using transactions.
-
- @param block The code to be run on the queue of `FMDatabaseQueue`
- 
- @warning    Unlike SQLite's `BEGIN TRANSACTION`, this method currently performs
-             an exclusive transaction, not a deferred transaction. This behavior
-             is likely to change in future versions of FMDB, whereby this method
-             will likely eventually adopt standard SQLite behavior and perform
-             deferred transactions. If you really need exclusive tranaction, it is
-             recommended that you use `inExclusiveTransaction`, instead, not only
-             to make your intent explicit, but also to future-proof your code.
-
- */
-
+// 使用事务 [transactions] 对 queue 中同步执行数据库操作
+// 注意：与 SQLite 的 BEGIN TRANSACTION 不同，此方法当前执行的是独占事务 [exclusive transaction]，而不是延迟事务 [deferred transaction]。
+// 在 FMDB 的未来版本中，这种行为可能会改变，因此这种方法最终可能会采用标准的 SQLite 行为并执行延迟事务。
+// 如果你真的需要独占传输，建议您使用 inclusivetransaction，这样不仅可以明确你的意图，而且可以证明你的代码是可靠的。
 - (void)inTransaction:(__attribute__((noescape)) void (^)(FMDatabase *db, BOOL *rollback))block;
 
 /** Synchronously perform database operations on queue, using deferred transactions.

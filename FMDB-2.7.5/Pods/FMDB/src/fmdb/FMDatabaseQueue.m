@@ -179,8 +179,7 @@ static const void * const kDispatchQueueSpecificKey = &kDispatchQueueSpecificKey
 
 - (void)inDatabase:(__attribute__((noescape)) void (^)(FMDatabase *db))block {
 #ifndef NDEBUG
-    /* Get the currently executing queue (which should probably be nil, but in theory could be another DB queue
-     * and then check it against self to make sure we're not about to deadlock. */
+    // 获取当前正在执行的 queue（可能是 nil，但是从理论上说可能是另一个 DB queue），然后对照 self 检查一下，以确保不会死锁
     FMDatabaseQueue *currentSyncQueue = (__bridge id)dispatch_get_specific(kDispatchQueueSpecificKey);
     assert(currentSyncQueue != self && "inDatabase: was called reentrantly on the same queue, which would lead to a deadlock");
 #endif

@@ -75,7 +75,7 @@
                                          phone:[result stringForColumn:@"phone"]];
         [arr addObject:p];
     }
-    NSLog(@"%s 获取到的 person array: %@", __func__, arr);
+    NSLog(@"%s 获取到的 person 数量: %lu", __func__, (unsigned long)arr.count);
     
     return arr.copy;
 }
