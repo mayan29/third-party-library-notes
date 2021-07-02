@@ -62,50 +62,15 @@
 
 #endif
 
-/**
- *	a key to associate with this view
- */
 @property (nonatomic, strong) id mas_key;
 
-/**
- *	Finds the closest common superview between this view and another view
- *
- *	@param	view	other view
- *
- *	@return	returns nil if common superview could not be found
- */
+// 查找当前 view 和其他 view 之间最近的公共 superview
 - (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view;
 
-/**
- *  Creates a MASConstraintMaker with the callee view.
- *  Any constraints defined are added to the view or the appropriate superview once the block has finished executing
- *
- *  @param block scope within which you can build up the constraints which you wish to apply to the view.
- *
- *  @return Array of created MASConstraints
- */
 - (NSArray *)mas_makeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
-/**
- *  Creates a MASConstraintMaker with the callee view.
- *  Any constraints defined are added to the view or the appropriate superview once the block has finished executing.
- *  If an existing constraint exists then it will be updated instead.
- *
- *  @param block scope within which you can build up the constraints which you wish to apply to the view.
- *
- *  @return Array of created/updated MASConstraints
- */
 - (NSArray *)mas_updateConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
-/**
- *  Creates a MASConstraintMaker with the callee view.
- *  Any constraints defined are added to the view or the appropriate superview once the block has finished executing.
- *  All constraints previously installed for the view will be removed.
- *
- *  @param block scope within which you can build up the constraints which you wish to apply to the view.
- *
- *  @return Array of created/updated MASConstraints
- */
 - (NSArray *)mas_remakeConstraints:(void(NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
 @end

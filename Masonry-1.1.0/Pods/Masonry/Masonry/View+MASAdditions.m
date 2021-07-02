@@ -166,6 +166,7 @@
 
 #pragma mark - heirachy
 
+// 查找当前 view 和其他 view 之间最近的公共 superview
 - (instancetype)mas_closestCommonSuperview:(MAS_VIEW *)view {
     MAS_VIEW *closestCommonSuperview = nil;
 
