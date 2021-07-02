@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BB9F5BAAA482251C800CBCE /* Pods_MasonryNote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B827AC8BBA6DD9F537283D91 /* Pods_MasonryNote.framework */; };
+		BC6C4DE6268F07D000C38B63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C4DE5268F07D000C38B63 /* AppDelegate.m */; };
+		BC6C4DEC268F07D000C38B63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C4DEB268F07D000C38B63 /* ViewController.m */; };
+		BC6C4DEF268F07D000C38B63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6C4DED268F07D000C38B63 /* Main.storyboard */; };
+		BC6C4DF1268F07D400C38B63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6C4DF0268F07D400C38B63 /* Assets.xcassets */; };
+		BC6C4DF4268F07D400C38B63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6C4DF2268F07D400C38B63 /* LaunchScreen.storyboard */; };
+		BC6C4DF7268F07D400C38B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C4DF6268F07D400C38B63 /* main.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		14B1F59CDD1F3DFFE0876486 /* Pods-MasonryNote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasonryNote.release.xcconfig"; path = "Target Support Files/Pods-MasonryNote/Pods-MasonryNote.release.xcconfig"; sourceTree = "<group>"; };
+		B827AC8BBA6DD9F537283D91 /* Pods_MasonryNote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasonryNote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6C4DE1268F07D000C38B63 /* MasonryNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasonryNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6C4DE4268F07D000C38B63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BC6C4DE5268F07D000C38B63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BC6C4DEA268F07D000C38B63 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BC6C4DEB268F07D000C38B63 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BC6C4DEE268F07D000C38B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BC6C4DF0268F07D400C38B63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC6C4DF3268F07D400C38B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC6C4DF5268F07D400C38B63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC6C4DF6268F07D400C38B63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C6DD7344108102C76A30CC90 /* Pods-MasonryNote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasonryNote.debug.xcconfig"; path = "Target Support Files/Pods-MasonryNote/Pods-MasonryNote.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC6C4DDE268F07D000C38B63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BB9F5BAAA482251C800CBCE /* Pods_MasonryNote.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		391ACA117550079EEAF2E3FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B827AC8BBA6DD9F537283D91 /* Pods_MasonryNote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		69DEA407937722B99D7815F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C6DD7344108102C76A30CC90 /* Pods-MasonryNote.debug.xcconfig */,
+				14B1F59CDD1F3DFFE0876486 /* Pods-MasonryNote.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BC6C4DD8268F07D000C38B63 = {
+			isa = PBXGroup;
+			children = (
+				BC6C4DE3268F07D000C38B63 /* MasonryNote */,
+				BC6C4DE2268F07D000C38B63 /* Products */,
+				69DEA407937722B99D7815F3 /* Pods */,
+				391ACA117550079EEAF2E3FA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BC6C4DE2268F07D000C38B63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC6C4DE1268F07D000C38B63 /* MasonryNote.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC6C4DE3268F07D000C38B63 /* MasonryNote */ = {
+			isa = PBXGroup;
+			children = (
+				BC6C4DE4268F07D000C38B63 /* AppDelegate.h */,
+				BC6C4DE5268F07D000C38B63 /* AppDelegate.m */,
+				BC6C4DEA268F07D000C38B63 /* ViewController.h */,
+				BC6C4DEB268F07D000C38B63 /* ViewController.m */,
+				BC6C4DED268F07D000C38B63 /* Main.storyboard */,
+				BC6C4DF0268F07D400C38B63 /* Assets.xcassets */,
+				BC6C4DF2268F07D400C38B63 /* LaunchScreen.storyboard */,
+				BC6C4DF5268F07D400C38B63 /* Info.plist */,
+				BC6C4DF6268F07D400C38B63 /* main.m */,
+			);
+			path = MasonryNote;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC6C4DE0268F07D000C38B63 /* MasonryNote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC6C4DFA268F07D400C38B63 /* Build configuration list for PBXNativeTarget "MasonryNote" */;
+			buildPhases = (
+				0D160D1CEEECB60AF8305898 /* [CP] Check Pods Manifest.lock */,
+				BC6C4DDD268F07D000C38B63 /* Sources */,
+				BC6C4DDE268F07D000C38B63 /* Frameworks */,
+				BC6C4DDF268F07D000C38B63 /* Resources */,
+				474EFA3A400438DAFEE36139 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MasonryNote;
+			productName = MasonryNote;
+			productReference = BC6C4DE1268F07D000C38B63 /* MasonryNote.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC6C4DD9268F07D000C38B63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					BC6C4DE0268F07D000C38B63 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = BC6C4DDC268F07D000C38B63 /* Build configuration list for PBXProject "MasonryNote" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC6C4DD8268F07D000C38B63;
+			productRefGroup = BC6C4DE2268F07D000C38B63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC6C4DE0268F07D000C38B63 /* MasonryNote */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC6C4DDF268F07D000C38B63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC6C4DF4268F07D400C38B63 /* LaunchScreen.storyboard in Resources */,
+				BC6C4DF1268F07D400C38B63 /* Assets.xcassets in Resources */,
+				BC6C4DEF268F07D000C38B63 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D160D1CEEECB60AF8305898 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MasonryNote-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		474EFA3A400438DAFEE36139 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MasonryNote/Pods-MasonryNote-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MasonryNote/Pods-MasonryNote-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MasonryNote/Pods-MasonryNote-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC6C4DDD268F07D000C38B63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC6C4DEC268F07D000C38B63 /* ViewController.m in Sources */,
+				BC6C4DE6268F07D000C38B63 /* AppDelegate.m in Sources */,
+				BC6C4DF7268F07D400C38B63 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BC6C4DED268F07D000C38B63 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC6C4DEE268F07D000C38B63 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BC6C4DF2268F07D400C38B63 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC6C4DF3268F07D400C38B63 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC6C4DF8268F07D400C38B63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BC6C4DF9268F07D400C38B63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC6C4DFB268F07D400C38B63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6DD7344108102C76A30CC90 /* Pods-MasonryNote.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AULC75KMVC;
+				INFOPLIST_FILE = MasonryNote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mayan.MasonryNote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC6C4DFC268F07D400C38B63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14B1F59CDD1F3DFFE0876486 /* Pods-MasonryNote.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AULC75KMVC;
+				INFOPLIST_FILE = MasonryNote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mayan.MasonryNote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC6C4DDC268F07D000C38B63 /* Build configuration list for PBXProject "MasonryNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC6C4DF8268F07D400C38B63 /* Debug */,
+				BC6C4DF9268F07D400C38B63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC6C4DFA268F07D400C38B63 /* Build configuration list for PBXNativeTarget "MasonryNote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC6C4DFB268F07D400C38B63 /* Debug */,
+				BC6C4DFC268F07D400C38B63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC6C4DD9268F07D000C38B63 /* Project object */;
+}
