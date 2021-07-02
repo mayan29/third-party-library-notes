@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,8 @@
 		BC6C4E16268F18C100C38B63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6C4E15268F18C100C38B63 /* Assets.xcassets */; };
 		BC6C4E19268F18C100C38B63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6C4E17268F18C100C38B63 /* LaunchScreen.storyboard */; };
 		BC6C4E1C268F18C100C38B63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C4E1B268F18C100C38B63 /* main.m */; };
+		BC6C4E24268F2A9500C38B63 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C4E23268F2A9500C38B63 /* Person.m */; };
+		BC6C4E27268F333700C38B63 /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6C4E26268F333700C38B63 /* FMDBManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,10 @@
 		BC6C4E18268F18C100C38B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC6C4E1A268F18C100C38B63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC6C4E1B268F18C100C38B63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BC6C4E22268F2A9500C38B63 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		BC6C4E23268F2A9500C38B63 /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		BC6C4E25268F333700C38B63 /* FMDBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDBManager.h; sourceTree = "<group>"; };
+		BC6C4E26268F333700C38B63 /* FMDBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDBManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +56,6 @@
 				13B3E606FF943AE3460F651B /* Pods-FMDBNote.debug.xcconfig */,
 				2BB98BB9C9DEE1EA093553D0 /* Pods-FMDBNote.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -87,6 +92,10 @@
 				BC6C4E0A268F18BD00C38B63 /* AppDelegate.m */,
 				BC6C4E0F268F18BD00C38B63 /* ViewController.h */,
 				BC6C4E10268F18BD00C38B63 /* ViewController.m */,
+				BC6C4E25268F333700C38B63 /* FMDBManager.h */,
+				BC6C4E26268F333700C38B63 /* FMDBManager.m */,
+				BC6C4E22268F2A9500C38B63 /* Person.h */,
+				BC6C4E23268F2A9500C38B63 /* Person.m */,
 				BC6C4E12268F18BD00C38B63 /* Main.storyboard */,
 				BC6C4E15268F18C100C38B63 /* Assets.xcassets */,
 				BC6C4E17268F18C100C38B63 /* LaunchScreen.storyboard */,
@@ -211,6 +220,8 @@
 			files = (
 				BC6C4E11268F18BD00C38B63 /* ViewController.m in Sources */,
 				BC6C4E0B268F18BD00C38B63 /* AppDelegate.m in Sources */,
+				BC6C4E27268F333700C38B63 /* FMDBManager.m in Sources */,
+				BC6C4E24268F2A9500C38B63 /* Person.m in Sources */,
 				BC6C4E1C268F18C100C38B63 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
