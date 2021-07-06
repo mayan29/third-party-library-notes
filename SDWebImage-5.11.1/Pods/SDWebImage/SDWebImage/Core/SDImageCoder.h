@@ -55,6 +55,7 @@ FOUNDATION_EXPORT SDImageCoderOption _Nonnull const SDImageCoderEncodeFirstFrame
  A double value between 0.0-1.0 indicating the encode compression quality to produce the image data. 1.0 resulting in no compression and 0.0 resulting in the maximum compression possible. If not provide, use 1.0. (NSNumber)
  @note works for `SDImageCoder`
  */
+// 0.0 - 1.0 之间的一个双精度值，表示产生 image 数据的编码压缩质量。1.0 为不压缩，0.0 为最大压缩。默认为 1.0
 FOUNDATION_EXPORT SDImageCoderOption _Nonnull const SDImageCoderEncodeCompressionQuality;
 
 /**
@@ -113,14 +114,8 @@ FOUNDATION_EXPORT SDImageCoderOption _Nonnull const SDImageCoderWebImageContext 
  */
 - (BOOL)canDecodeFromData:(nullable NSData *)data;
 
-/**
- Decode the image data to image.
- @note This protocol may supports decode animated image frames. You can use `+[SDImageCoderHelper animatedImageWithFrames:]` to produce an animated image with frames.
-
- @param data The image data to be decoded
- @param options A dictionary containing any decoding options. Pass @{SDImageCoderDecodeScaleFactor: @(1.0)} to specify scale factor for image. Pass @{SDImageCoderDecodeFirstFrameOnly: @(YES)} to decode the first frame only.
- @return The decoded image from data
- */
+// 将 image data 解码成 image
+// @note This protocol may supports decode animated image frames. You can use `+[SDImageCoderHelper animatedImageWithFrames:]` to produce an animated image with frames.
 - (nullable UIImage *)decodedImageWithData:(nullable NSData *)data
                                    options:(nullable SDImageCoderOptions *)options;
 

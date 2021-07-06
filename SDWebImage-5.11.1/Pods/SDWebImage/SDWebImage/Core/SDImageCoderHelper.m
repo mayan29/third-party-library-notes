@@ -269,7 +269,7 @@ static const CGFloat kDestSeemOverlap = 2.0f;   // the numbers of pixels to over
     // Apply transform
     CGAffineTransform transform = SDCGContextTransformFromOrientation(orientation, CGSizeMake(newWidth, newHeight));
     CGContextConcatCTM(context, transform);
-    CGContextDrawImage(context, CGRectMake(0, 0, width, height), cgImage); // The rect is bounding box of CGImage, don't swap width & height
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), cgImage); // 这个矩形 [rect] 是 CGImage 的边界框，不交换宽度和高度
     CGImageRef newImageRef = CGBitmapContextCreateImage(context);
     CGContextRelease(context);
     
@@ -326,6 +326,7 @@ static const CGFloat kDestSeemOverlap = 2.0f;   // the numbers of pixels to over
     return outputImage;
 }
 
+// 按提供的 image 返回解码 image。这个不同于 `CGImageCreateDecoded:`，它不会解码包含 alpha 通道的 image 或者 animated image
 + (UIImage *)decodedImageWithImage:(UIImage *)image {
     if (![self shouldDecodeImage:image]) {
         return image;

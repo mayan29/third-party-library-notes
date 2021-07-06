@@ -10,9 +10,7 @@
 #import "SDWebImageCompat.h"
 #import "SDImageFrame.h"
 
-/**
- Provide some common helper methods for building the image decoder/encoder.
- */
+// 提供一些构建 image 解码器/编码器的常用辅助方法。
 @interface SDImageCoderHelper : NSObject
 
 /**
@@ -83,11 +81,7 @@
  */
 + (CGImageRef _Nullable)CGImageCreateScaled:(_Nonnull CGImageRef)cgImage size:(CGSize)size CF_RETURNS_RETAINED;
 
-/**
- Return the decoded image by the provided image. This one unlike `CGImageCreateDecoded:`, will not decode the image which contains alpha channel or animated image
- @param image The image to be decoded
- @return The decoded image
- */
+// 按提供的 image 返回解码 image。这个不同于 `CGImageCreateDecoded:`，它不会解码包含 alpha 通道的 image 或者 animated image
 + (UIImage * _Nullable)decodedImageWithImage:(UIImage * _Nullable)image;
 
 /**

@@ -25,16 +25,8 @@ FOUNDATION_EXPORT SDWebImageContextOption _Nonnull const SDWebImageContextLoader
 
 #pragma mark - Helper method
 
-/**
- This is the built-in decoding process for image download from network or local file.
- @note If you want to implement your custom loader with `requestImageWithURL:options:context:progress:completed:` API, but also want to keep compatible with SDWebImage's behavior, you'd better use this to produce image.
-
- @param imageData The image data from the network. Should not be nil
- @param imageURL The image URL from the input. Should not be nil
- @param options The options arg from the input
- @param context The context arg from the input
- @return The decoded image for current image data load from the network
- */
+// 用于从网络或本地文件下载的 image 的内置解码 process
+// 注意：如果要使用 `requestImageWithURL:options:context:progress:completed:` 实现自定义加载器，但也希望与 SDWebImage 的行为保持兼容，则最好使用它来生成 image
 FOUNDATION_EXPORT UIImage * _Nullable SDImageLoaderDecodeImageData(NSData * _Nonnull imageData, NSURL * _Nonnull imageURL, SDWebImageOptions options, SDWebImageContext * _Nullable context);
 
 /**

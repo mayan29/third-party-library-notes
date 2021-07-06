@@ -57,6 +57,7 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     return YES;
 }
 
+// image 解码
 - (UIImage *)decodedImageWithData:(NSData *)data options:(nullable SDImageCoderOptions *)options {
     if (!data) {
         return nil;

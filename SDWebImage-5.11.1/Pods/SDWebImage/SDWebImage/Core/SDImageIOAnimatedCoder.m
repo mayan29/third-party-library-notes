@@ -199,7 +199,7 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     }
     
     CFStringRef uttype = CGImageSourceGetType(source);
-    // Check vector format
+    // 检查矢量格式
     BOOL isVector = NO;
     if ([NSData sd_imageFormatFromUTType:uttype] == SDImageFormatPDF) {
         isVector = YES;

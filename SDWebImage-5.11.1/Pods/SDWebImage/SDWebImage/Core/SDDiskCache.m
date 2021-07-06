@@ -204,8 +204,7 @@ static NSString * const SDDiskCacheExtendedAttributeName = @"com.hackemist.SDDis
         [self.fileManager removeItemAtURL:fileURL error:nil];
     }
     
-    // If our remaining disk cache exceeds a configured maximum size, perform a second
-    // size-based cleanup pass.  We delete the oldest files first.
+    // 如果剩余磁盘缓存超过配置的最大 size，将会执行第二次基于 size 的清理。我们先删除最旧的文件。
     NSUInteger maxDiskSize = self.config.maxDiskSize;
     if (maxDiskSize > 0 && currentCacheSize > maxDiskSize) {
         // 清理的目标：缓存为 maxDiskSize 的一半

@@ -207,7 +207,7 @@ static void * SDWebImageDownloaderContext = &SDWebImageDownloaderContext;
     SD_LOCK(_operationsLock);
     id downloadOperationCancelToken;
     NSOperation<SDWebImageDownloaderOperation> *operation = [self.URLOperations objectForKey:url];
-    // There is a case that the operation may be marked as finished or cancelled, but not been removed from `self.URLOperations`.
+    // operation 可能被标记为已完成或已取消，但没有从 self.URLOperations 中删除。
     if (!operation || operation.isFinished || operation.isCancelled) {
         operation = [self createDownloaderOperationWithUrl:url options:options context:context];
         if (!operation) {

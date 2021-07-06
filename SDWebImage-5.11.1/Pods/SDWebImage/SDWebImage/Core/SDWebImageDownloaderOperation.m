@@ -467,21 +467,20 @@ didReceiveResponse:(NSURLResponse *)response
         if ([self callbacksForKey:kCompletedCallbackKey].count > 0) {
             NSData *imageData = self.imageData;
             self.imageData = nil;
-            // data decryptor
+            // decryptor: data 解码器，默认为 nil
             if (imageData && self.decryptor) {
                 imageData = [self.decryptor decryptedDataWithData:imageData response:self.response];
             }
             if (imageData) {
-                /**  if you specified to only use cached data via `SDWebImageDownloaderIgnoreCachedResponse`,
-                 *  then we should check if the cached data is equal to image data
-                 */
+                // if you specified to only use cached data via `SDWebImageDownloaderIgnoreCachedResponse`,
+                // then we should check if the cached data is equal to image data
                 if (self.options & SDWebImageDownloaderIgnoreCachedResponse && [self.cachedData isEqualToData:imageData]) {
                     self.responseError = [NSError errorWithDomain:SDWebImageErrorDomain code:SDWebImageErrorCacheNotModified userInfo:@{NSLocalizedDescriptionKey : @"Downloaded image is not modified and ignored"}];
                     // call completion block with not modified error
                     [self callCompletionBlocksWithError:self.responseError];
                     [self done];
                 } else {
-                    // decode the image in coder queue, cancel all previous decoding process
+                    // 取消之前所有解码 process
                     [self.coderQueue cancelAllOperations];
                     @weakify(self);
                     [self.coderQueue addOperationWithBlock:^{
@@ -489,12 +488,13 @@ didReceiveResponse:(NSURLResponse *)response
                         if (!self) {
                             return;
                         }
-                        // check if we already use progressive decoding, use that to produce faster decoding
+                        // 检查我们是否已经使用渐进式 [progressive] 解码，使用它来产生更快的解码
                         id<SDProgressiveImageCoder> progressiveCoder = SDImageLoaderGetProgressiveCoder(self);
                         UIImage *image;
                         if (progressiveCoder) {
                             image = SDImageLoaderDecodeProgressiveImageData(imageData, self.request.URL, YES, self, [[self class] imageOptionsFromDownloaderOptions:self.options], self.context);
                         } else {
+                            // 用于从网络或本地文件下载的 image 的内置解码 process
                             image = SDImageLoaderDecodeImageData(imageData, self.request.URL, [[self class] imageOptionsFromDownloaderOptions:self.options], self.context);
                         }
                         CGSize imageSize = image.size;

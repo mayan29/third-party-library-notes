@@ -98,6 +98,7 @@
     return NO;
 }
 
+// image 解码
 - (UIImage *)decodedImageWithData:(NSData *)data options:(nullable SDImageCoderOptions *)options {
     if (!data) {
         return nil;
@@ -106,6 +107,7 @@
     NSArray<id<SDImageCoder>> *coders = self.coders;
     for (id<SDImageCoder> coder in coders.reverseObjectEnumerator) {
         if ([coder canDecodeFromData:data]) {
+            // 默认 SDImageIOCoder - image 解码
             image = [coder decodedImageWithData:data options:options];
             break;
         }

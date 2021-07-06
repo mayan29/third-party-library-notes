@@ -29,6 +29,7 @@
     return decryptor;
 }
 
+// 解码下载的原始 data 并返回新数据。你可以使用你喜欢的算法来解码 data。默认不会走这个方法。
 - (nullable NSData *)decryptedDataWithData:(nonnull NSData *)data response:(nullable NSURLResponse *)response {
     if (!self.block) {
         return nil;

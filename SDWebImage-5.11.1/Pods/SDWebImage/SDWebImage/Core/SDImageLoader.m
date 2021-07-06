@@ -29,6 +29,7 @@ void SDImageLoaderSetProgressiveCoder(id<SDWebImageOperation> operation, id<SDPr
     objc_setAssociatedObject(operation, SDImageLoaderProgressiveCoderKey, progressiveCoder, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+// 用于从网络或本地文件下载的 image 的内置解码 process
 UIImage * _Nullable SDImageLoaderDecodeImageData(NSData * _Nonnull imageData, NSURL * _Nonnull imageURL, SDWebImageOptions options, SDWebImageContext * _Nullable context) {
     NSCParameterAssert(imageData);
     NSCParameterAssert(imageURL);
@@ -64,7 +65,7 @@ UIImage * _Nullable SDImageLoaderDecodeImageData(NSData * _Nonnull imageData, NS
     mutableCoderOptions[SDImageCoderWebImageContext] = context;
     SDImageCoderOptions *coderOptions = [mutableCoderOptions copy];
     
-    // Grab the image coder
+    // 获取 image 编码器
     id<SDImageCoder> imageCoder;
     if ([context[SDWebImageContextImageCoder] conformsToProtocol:@protocol(SDImageCoder)]) {
         imageCoder = context[SDWebImageContextImageCoder];
@@ -73,7 +74,7 @@ UIImage * _Nullable SDImageLoaderDecodeImageData(NSData * _Nonnull imageData, NS
     }
     
     if (!decodeFirstFrame) {
-        // check whether we should use `SDAnimatedImage`
+        // 检查是否使用了 `SDAnimatedImage`
         Class animatedImageClass = context[SDWebImageContextAnimatedImageClass];
         if ([animatedImageClass isSubclassOfClass:[UIImage class]] && [animatedImageClass conformsToProtocol:@protocol(SDAnimatedImage)]) {
             image = [[animatedImageClass alloc] initWithData:imageData scale:scale options:coderOptions];
@@ -91,6 +92,7 @@ UIImage * _Nullable SDImageLoaderDecodeImageData(NSData * _Nonnull imageData, NS
         }
     }
     if (!image) {
+        // SDImageCodersManager - image 解码
         image = [imageCoder decodedImageWithData:imageData options:coderOptions];
     }
     if (image) {
